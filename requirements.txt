@@ -6,3 +6,4 @@ pdfplumber
 docx2txt
 spacy
 werkzeug
+gunicorn
