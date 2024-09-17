@@ -1,0 +1,8 @@
+Flask
+Flask-Cors
+requests
+beautifulsoup4
+pdfplumber
+docx2txt
+spacy
+werkzeug
