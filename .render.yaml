@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: flask-app
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn run:app"
+    plan: free
+    region: us
+    # Uncomment the following lines if you have environment variables
+    # envVars:
+    #   - key: YOUR_ENV_VAR
+    #     value: YOUR_VALUE
