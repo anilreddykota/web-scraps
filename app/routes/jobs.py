@@ -51,3 +51,23 @@ def scrape_jobs():
         })
     else:
         return jsonify({'success': False, 'message': 'Invalid source specified'}), 400
+
+@jobs_bp.route('/scrapegovjobs', methods=['GET'])
+def index():
+    job_links, total_jobs = scrape_jobs()
+
+    page = request.args.get('page', 1, type=int)
+    per_page = 5
+    paginated_jobs = job_links[(page - 1) * per_page: page * per_page]
+
+    next_page = page + 1 if (page * per_page) < total_jobs else None
+    prev_page = page - 1 if page > 1 else None
+
+    return jsonify({
+        'jobs': paginated_jobs,
+        'page': page,
+        'per_page': per_page,
+        'total_jobs': total_jobs,
+        'next_page': next_page,
+        'prev_page': prev_page
+    })
